@@ -510,6 +510,8 @@ def main():
     model_args = {}
     if args.dtype == "half":
         model_args["torch_dtype"] = torch.float16
+    model_args["offload_folder"] = "./offload"
+    model_args["low_cpu_mem_usage"] = True
     model = AutoModelForCausalLM.from_pretrained(
         gpt, 
         device_map="cuda:0", 
